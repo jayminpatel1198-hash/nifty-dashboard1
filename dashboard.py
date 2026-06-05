@@ -73,7 +73,6 @@ weights = {
     "HDFCLIFE":0.66, "APOLLOHOSP":0.63, "TATACONSUM":0.60, "CIPLA":0.59,
     "NESTLEIND":0.76, "DRREDDY":0.64
 }
-
 @app.route("/")
 def home():
     if not ACCESS_TOKEN:
@@ -190,12 +189,6 @@ else:
     signal_class = "neutral"
     strength = "WEAK"
     risk = "HIGH"
-    elif bull_score <= 30 and red_pct >= 60:
-        signal = "PUT BUY FAVOURABLE"
-        signal_class = "bear"
-    else:
-        signal = "NO TRADE / SIDEWAYS"
-        signal_class = "neutral"
 
     gainers = sorted(rows, key=lambda x: x["pct"], reverse=True)[:5]
     losers = sorted(rows, key=lambda x: x["pct"])[:5]
