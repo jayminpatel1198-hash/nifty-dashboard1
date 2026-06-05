@@ -202,28 +202,29 @@ else:
 
     time_now = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
-    return """
+    return f"""
     <html>
     <head>
         <title>Nifty Option Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="refresh" content="5">
         <style>
-            body {{ font-family: Arial; background:#f4f6f8; margin:0; padding:14px; }}
-            h2 {{ text-align:center; }}
-            .grid {{ display:grid; grid-template-columns: repeat(2, 1fr); gap:10px; }}
-            .card {{ background:white; padding:15px; border-radius:12px; box-shadow:0 2px 6px #ddd; }}
-            .big {{ font-size:26px; font-weight:bold; }}
-            .green {{ color:#0a9f45; font-weight:bold; }}
-            .red {{ color:#d93025; font-weight:bold; }}
-            .bull {{ background:#d9fbe6; color:#078b3e; }}
-            .bear {{ background:#ffe1e1; color:#b00020; }}
-            .neutral {{ background:#fff3cd; color:#8a6d00; }}
-            .signal {{ padding:18px; border-radius:14px; text-align:center; font-size:24px; font-weight:bold; margin:12px 0; }}
-            table {{ width:100%; border-collapse:collapse; }}
-            td, th {{ padding:8px; border-bottom:1px solid #eee; text-align:left; }}
-            .full {{ grid-column:1 / 3; }}
-            small {{ color:#666; }}
+body {{ font-family: Arial; background:#f4f6f8; margin:0; padding:14px; }}
+h2 {{ text-align:center; }}
+.grid {{ display:grid; grid-template-columns: repeat(2, 1fr); gap:10px; }}
+.card {{ background:white; padding:15px; border-radius:12px; box-shadow:0 2px 6px #ddd; }}
+.big {{ font-size:26px; font-weight:bold; }}
+.green {{ color:#0a9f45; font-weight:bold; }}
+.red {{ color:#d93025; font-weight:bold; }}
+.bull {{ background:#d9fbe6; color:#078b3e; }}
+.bear {{ background:#ffe1e1; color:#b00020; }}
+.neutral {{ background:#fff3cd; color:#8a6d00; }}
+.signal {{ padding:18px; border-radius:14px; text-align:center; font-size:24px; font-weight:bold; margin:12px 0; }}
+table {{ width:100%; border-collapse:collapse; }}
+td, th {{ padding:8px; border-bottom:1px solid #eee; text-align:left; }}
+.full {{ grid-column:1 / 3; }}
+small {{ color:#666; }}
+</style>
         </style>
     </head>
     <body>
