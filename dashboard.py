@@ -151,9 +151,45 @@ def home():
     if bull_score < 0:
         bull_score = 0
 
-    if bull_score >= 70 and green_pct >= 60:
-        signal = "CALL BUY FAVOURABLE"
-        signal_class = "bull"
+    call_bias = bull_score
+put_bias = round(100 - bull_score, 1)
+
+if green_pct >= 65 and bull_score >= 75:
+    market_mode = "TRENDING BULLISH"
+    signal = "STRONG CALL BUY BIAS"
+    signal_class = "bull"
+    strength = "STRONG"
+    risk = "LOW"
+elif red_pct >= 65 and bull_score <= 25:
+    market_mode = "TRENDING BEARISH"
+    signal = "STRONG PUT BUY BIAS"
+    signal_class = "bear"
+    strength = "STRONG"
+    risk = "LOW"
+elif 45 <= green_pct <= 55:
+    market_mode = "CHOPPY / SIDEWAYS"
+    signal = "NO TRADE - OPTION BUYING AVOID"
+    signal_class = "neutral"
+    strength = "WEAK"
+    risk = "HIGH"
+elif bull_score >= 60:
+    market_mode = "MILD BULLISH"
+    signal = "CALL SIDE BIAS - WAIT FOR BREAKOUT"
+    signal_class = "bull"
+    strength = "MEDIUM"
+    risk = "MEDIUM"
+elif bull_score <= 40:
+    market_mode = "MILD BEARISH"
+    signal = "PUT SIDE BIAS - WAIT FOR BREAKDOWN"
+    signal_class = "bear"
+    strength = "MEDIUM"
+    risk = "MEDIUM"
+else:
+    market_mode = "SIDEWAYS"
+    signal = "NO TRADE"
+    signal_class = "neutral"
+    strength = "WEAK"
+    risk = "HIGH"
     elif bull_score <= 30 and red_pct >= 60:
         signal = "PUT BUY FAVOURABLE"
         signal_class = "bear"
@@ -208,7 +244,11 @@ def home():
             <div class="card"><div>Red</div><div class="big red">{red} ({red_pct}%)</div></div>
             <div class="card"><div>Advance / Decline</div><div class="big">{adv_dec}</div></div>
             <div class="card"><div>Weight Score</div><div class="big">{round(weighted_score,2)}</div></div>
-
+            <div class="card"><div>Call Bias</div><div class="big green">{call_bias}/100</div></div>
+<div class="card"><div>Put Bias</div><div class="big red">{put_bias}/100</div></div>
+<div class="card"><div>Market Mode</div><div class="big">{market_mode}</div></div>
+<div class="card"><div>Signal Strength</div><div class="big">{strength}</div></div>
+<div class="card"><div>Risk</div><div class="big">{risk}</div></div>
             <div class="card full">
                 <h3>Top 5 Gainers</h3>
                 <table><tr><th>Stock</th><th>Price</th><th>%</th></tr>{make_table(gainers)}</table>
