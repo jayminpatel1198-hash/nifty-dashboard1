@@ -202,7 +202,7 @@ else:
 
     time_now = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
-    return f"""
+    return """
     <html>
     <head>
         <title>Nifty Option Dashboard</title>
